@@ -59,7 +59,7 @@ générées.
 
 ## Prise en main de l'IDT
 
-**Q1* : Dans tp.c, localiser l'IDT et afficher son adresse de chargement**
+**Q1\* : Dans tp.c, localiser l'IDT et afficher son adresse de chargement**
   (cf. fonction `get_idtr()` définie dans [`segmem.h`](../kernel/include/segmem.h)).
 
 ## Gestion furtive des breakpoints #BP
@@ -105,11 +105,11 @@ de l'essai précédent.
 **Quelle signification cette valeur a-t-elle ? S'aider à nouveau de `objdump -D`
 pour comparer cette valeur à une adresse de votre noyau.**
 
-**Q8* : Qu'est-ce qui n'est pas stocké par le CPU à l'arrivée d'une
+**Q8\* : Qu'est-ce qui n'est pas stocké par le CPU à l'arrivée d'une
   interruption et qu'il est impératif de sauvegarder avant tout traitement de
   l'interruption ? L'implémenter en assembleur inline dans  `bp_handler`.**
 
-**Q9* : Par quelle instruction doit se terminer la routine pour que le noyau
+**Q9\* : Par quelle instruction doit se terminer la routine pour que le noyau
   rende la main à la fonction tp() ? L'implémenter en assembleur inline dans
   `bp_handler`.**
 

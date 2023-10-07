@@ -5,7 +5,7 @@ d'interruption 48 n'étant utilisé par aucune exception ni autre usage dans ce
 projet, on se propose de définir une routine de traitement d'appels système
 sur cette ligne. 
 
-**Q1 : Un squelette de fonction `userland` est fourni dans `tp.c`. Reprendre
+**Q1\* : Un squelette de fonction `userland` est fourni dans `tp.c`. Reprendre
   le code du TP 3 pour modifier `tp()` de manière à démarrer du code ring
   3.**
 
@@ -42,10 +42,10 @@ void userland() {
 }
 ```
 
-**Q3 : Pourquoi observe-t-on une #GP ? Corriger le problème de sorte qu'il
+**Q3\* : Pourquoi observe-t-on une #GP ? Corriger le problème de sorte qu'il
   soit autorisé d'appeler l'interruption "48" avec un RPL à 3.**
 
-**Q4 : Modifier la fonction `syscall_handler()` pour qu'elle affiche une
+**Q4\* : Modifier la fonction `syscall_handler()` pour qu'elle affiche une
   chaîne de caractères dont l'adresse se trouve dans le registre "ESI". Nous
   venons de créer un appel système permettant d'afficher un message à l'écran
   et prenant son argument via "ESI". Essayer cet appel système depuis votre

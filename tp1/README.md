@@ -39,7 +39,7 @@ point d'entrée du noyau.
   de base de la GDT en cours d'utilisation ainsi que sa "limite" (type utile :
   `gdt_reg_t`).**
 
-**Q2* :  Dans [`tp.c`](./tp.c), un exemple d'implémentation d'affichage du
+**Q2\* :  Dans [`tp.c`](./tp.c), un exemple d'implémentation d'affichage du
   contenu de table de type GDT est fournie (fonction `print_gdt_content`).
   L'utiliser pour afficher le contenu de la GDT courante.**
 
@@ -63,7 +63,7 @@ taille et un contenu qu'on maîtrise, dans un premier lieu en mode "flat".
 
 ### Définition de GDT et descripteurs 
 
-**Q5* : Choisir une adresse de base pour stocker une nouvelle GDT, et définir les descripteurs ring 0 suivants :**
+**Q5\* : Choisir une adresse de base pour stocker une nouvelle GDT, et définir les descripteurs ring 0 suivants :**
 
 * Code, 32 bits RX, flat, indice 1
 * Données, 32 bits RW, flat, indice 2.
@@ -80,7 +80,7 @@ encore "utilisée". En effet, pour que le matériel sache quelle table et quels
 descripteurs utiliser, il est nécessaire de mettre à jour les registres
 système relatifs à la segmentation : GDTR, cs/ss/ds/etc.
 
-**Q6* : Charger l'adresse de base de la nouvelle GDT dans le registre GDTR,
+**Q6\* : Charger l'adresse de base de la nouvelle GDT dans le registre GDTR,
   ainsi que sa limite, puis mettre à jour les sélecteurs de segment
   (cs/ss/ds/...) afin qu'ils pointent vers les descripteurs précédemment
   définis.**

@@ -33,20 +33,20 @@ des espaces d'adressage.
 
 ## Mise en place de schéma de pagination en identity mapping
 
-**Q1* : A l'aide de la fonction `get_cr3()`, afficher la valeur courante du
+**Q1\* : A l'aide de la fonction `get_cr3()`, afficher la valeur courante du
   registre CR3 dans `tp.c`.**
 
-**Q2* : Allouer un PGD de type `(pde32_t*)` à l'adresse physique `0x600000` et
+**Q2\* : Allouer un PGD de type `(pde32_t*)` à l'adresse physique `0x600000` et
   mettre à jour `CR3` avec cette adresse.**
 
-**Q3* : Modifier le registre CR0 de sorte à activer la pagination dans `tp.c`.
+**Q3\* : Modifier le registre CR0 de sorte à activer la pagination dans `tp.c`.
   Que se passe-t-il ? Pourquoi ?**
 
-**Q4* : Un certain nombre de choses restent à configurer avant l'activation de
+**Q4\* : Un certain nombre de choses restent à configurer avant l'activation de
   la pagination. Comme pour le PGD, allouer également une PTB de type `
   (pte32_t*)` à l'adresse `0x601000`.**
 
-**Q5* : Le but va être maintenant d'initialiser la mémoire virtuelle
+**Q5\* : Le but va être maintenant d'initialiser la mémoire virtuelle
   en "identity mapping" : les adresses virtuelles doivent être identiques aux
   adresses physiques. Pour cela :**
 
@@ -60,7 +60,7 @@ des espaces d'adressage.
   capable de modifier les entrées de votre PTB une fois la pagination
   activée.**
 
-**Q7* : Avant d'activer la pagination, on souhaiterait faire en sorte que
+**Q7\* : Avant d'activer la pagination, on souhaiterait faire en sorte que
   l'adresse virtuelle `0xc0000000` permette de modifier votre PGD après
   activation de la pagination. Comment le réaliser ?**
 
