@@ -88,7 +88,7 @@ bootloader Grub. Celui-ci est configuré pour charger le fichier `kernel.elf`
 depuis le disque dur "HDD0". Le fichier `kernel.elf` est notre noyau d'OS, il
 se trouve dans le répertoire de TP courant.
 
-Raccourcis QEMU utiles à connaitre :
+## Raccourcis QEMU utiles à connaitre
 
 * **\<ctrl-a\> \<x\>** : pour quitter (et stopper) la VM
 * **\<ctrl-a\>** puis **\<c\>** puis **\<enter\>**: pour accéder au "monitor" de QEMU (inspection de debug de la machine)
@@ -102,11 +102,6 @@ logs envoyées sur le port série, tapez de nouveau la
 séquence **\<ctrl-a\> \<c\> \<enter\>**. Le monitor est multiplexé avec le
 port série sur stdio.
 * **q** : pour quitter le mode monitor de QEMU
-
-
-Note : Le lancement de SECOS sous QEMU est configurable via le fichier
-[`config.mk`](./utils/config.mk) qui définit les options à passer à QEMU au
-démarrage. Il est notamment possible d'utiliser également le serveur GDB de QEMU. Lire [`README.DEBUG.md`](./README.DEBUG.md) qui contient une aide au debugging offert par l'environnement QEMU.
 
 # En savoir plus
 
