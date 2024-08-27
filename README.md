@@ -3,7 +3,7 @@
 ## Introduction
 
 secos-ng est la nouvelle version de [SECOS](https://github.com/sduverger/secos), 
-un projet éducatif permettant d'appliquer pas à pas les concepts d'OS abordés 
+un projet éducatif permettant d'appliquer pas à pas les concepts d'OS et de sécurité abordés 
 en cours à l'aide de petits TPs.
 
 Le guide suivant indique, en bref comment installer, trouver les énoncés et démarrer un TP.
