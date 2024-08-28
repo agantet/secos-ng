@@ -44,7 +44,7 @@
 /*
 ** Contributory exceptions
 */
-#define contributory_exception(_e_)                             \
+#define is_contributory_exception(_e_)                             \
    ((_e_) == GP_EXCP || (_e_) == NP_EXCP || (_e_) == TS_EXCP || \
     (_e_) == DE_EXCP || (_e_) == SS_EXCP)
 
@@ -52,13 +52,13 @@
 ** Double fault condition
 */
 #define double_fault(_e1_,_e2_)                                         \
-   ((contributory_exception(_e1_) && contributory_exception(_e2_)) ||   \
-    (_e1_ == PF_EXCP && (_e2_ == PF_EXCP || contributory_exception(_e2_))))
+   ((is_contributory_exception(_e1_) && is_contributory_exception(_e2_)) ||   \
+    (_e1_ == PF_EXCP && (_e2_ == PF_EXCP || is_contributory_exception(_e2_))))
 
 /*
 ** Triple fault condition
 */
-#define triple_fault(_e_)           ((_e_) == DF_EXCP)
+#define is_triple_fault(_e_)           ((_e_) == DF_EXCP)
 
 /*
 ** Selector error code
