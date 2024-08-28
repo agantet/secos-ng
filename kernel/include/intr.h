@@ -62,6 +62,43 @@ typedef struct interrupt_context
 
 typedef void (*isr_t)(int_ctx_t*);
 
+/*
+** Interrupt descriptor
+*/
+typedef union interrupt_descriptor
+{
+   struct
+   {
+      uint64_t  offset_1:16;    /* bits 00-15 of the isr offset */
+      uint64_t  selector:16;    /* isr segment selector */
+      uint64_t  ist:3;          /* stack table: only 64 bits */
+      uint64_t  zero_1:5;       /* must be 0 */
+      uint64_t  type:4;         /* interrupt/trap gate */
+      uint64_t  zero_2:1;       /* must be zero */
+      uint64_t  dpl:2;          /* privilege level */
+      uint64_t  p:1;            /* present flag */
+      uint64_t  offset_2:16;    /* bits 16-31 of the isr offset */
+
+   } __attribute__((packed));
+
+   raw64_t;
+
+} __attribute__((packed)) int_desc_t;
+
+/*
+** Interrupt descriptor table
+*/
+typedef struct interrupt_descriptor_table_register
+{
+   uint16_t        limit;           /* dt limit = size - 1 */
+   union                            /* base address */
+   {
+      offset_t     addr;
+      int_desc_t   *desc;
+   };
+
+} __attribute__((packed)) idt_reg_t;
+
 #define build_int_desc(_dsc_, _cs_, _isr_)                              \
    ({                                                                   \
       raw32_t addr = {.raw = _isr_};                                    \
@@ -71,6 +108,12 @@ typedef void (*isr_t)(int_ctx_t*);
       (_dsc_)->offset_2 = addr.whigh;                                   \
       (_dsc_)->p        = 1;                                            \
    })
+
+#define get_idtr(aLocation)       \
+   asm volatile ("sidt %0"::"m"(aLocation):"memory")
+
+#define set_idtr(val)             \
+   asm volatile ("lidt  %0"::"m"(val):"memory")
 
 void intr_init();
 void intr_hdlr(int_ctx_t*) __regparm__(1);
