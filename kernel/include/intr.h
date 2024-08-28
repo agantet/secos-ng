@@ -62,7 +62,7 @@ typedef struct interrupt_context
 
 typedef void (*isr_t)(int_ctx_t*);
 
-#define int_desc(_dsc_, _cs_, _isr_)                                    \
+#define build_int_desc(_dsc_, _cs_, _isr_)                              \
    ({                                                                   \
       raw32_t addr = {.raw = _isr_};                                    \
       (_dsc_)->raw      = addr.wlow;                                    \
