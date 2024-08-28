@@ -17,7 +17,7 @@ void intr_init()
 
    /* re-use default grub GDT code descriptor */
    for(i=0 ; i<IDT_NR_DESC ; i++, isr += IDT_ISR_ALGN)
-      int_desc(&IDT[i], gdt_krn_seg_sel(1), isr);
+      build_int_desc(&IDT[i], gdt_krn_seg_sel(1), isr);
 
    idtr.desc  = IDT;
    idtr.limit = sizeof(IDT) - 1;
