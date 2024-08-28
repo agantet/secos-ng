@@ -35,7 +35,7 @@ Notre noyau dispose déjà d'une petite IDT. Elle est configurée dans
 [intr.c](../kernel/core/intr.c) par la fonction `intr_init()`,  qui 
 a notamment permis d'intercepter les #GP du TP1.
 
-L'IDT contient des descripteurs d'interruptions `int_desc` qui sont
+L'IDT contient des descripteurs d'interruptions `int_desc_t` qui sont
 initialisés avec leur propre handler d'interruption `isr`.
 
 La valeur d'isr correspond à des petites fonctions que l'on peut voir comme
