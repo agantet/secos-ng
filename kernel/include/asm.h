@@ -8,7 +8,7 @@
 #define force_interrupts_off()    asm volatile( "cli" )
 #define halt()                    asm volatile( "cli ; hlt" )
 
-#define interrupts_enabled()         (get_flags() & EFLAGS_IF)
+#define is_interrupts_enabled()         (get_flags() & EFLAGS_IF)
 #define disable_interrupts(flags)    ({save_flags(flags);force_interrupts_off();})
 #define enable_interrupts(flags)     ({save_flags(flags);force_interrupts_on();})
 #define restore_interrupts(flags)    load_flags(flags)
