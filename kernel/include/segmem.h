@@ -135,42 +135,7 @@ typedef struct local_descriptor_table_register
 
 } __attribute__((packed)) ldt_reg_t;
 
-/*
-** Interrupt descriptor
-*/
-typedef union interrupt_descriptor
-{
-   struct
-   {
-      uint64_t  offset_1:16;    /* bits 00-15 of the isr offset */
-      uint64_t  selector:16;    /* isr segment selector */
-      uint64_t  ist:3;          /* stack table: only 64 bits */
-      uint64_t  zero_1:5;       /* must be 0 */
-      uint64_t  type:4;         /* interrupt/trap gate */
-      uint64_t  zero_2:1;       /* must be zero */
-      uint64_t  dpl:2;          /* privilege level */
-      uint64_t  p:1;            /* present flag */
-      uint64_t  offset_2:16;    /* bits 16-31 of the isr offset */
 
-   } __attribute__((packed));
-
-   raw64_t;
-
-} __attribute__((packed)) int_desc_t;
-
-/*
-** Interrupt descriptor table
-*/
-typedef struct interrupt_descriptor_table_register
-{
-   uint16_t        limit;           /* dt limit = size - 1 */
-   union                            /* base address */
-   {
-      offset_t     addr;
-      int_desc_t   *desc;
-   };
-
-} __attribute__((packed)) idt_reg_t;
 
 /*
 ** Task state segment structures
@@ -262,8 +227,6 @@ typedef struct task_state_segment
    asm volatile ("sgdt %0"::"m"(aLocation):"memory")
 #define get_ldtr(aLocation)       \
    asm volatile ("sldt %0"::"m"(aLocation):"memory")
-#define get_idtr(aLocation)       \
-   asm volatile ("sidt %0"::"m"(aLocation):"memory")
 #define get_tr(aLocation)         \
    asm volatile ("str   %0"::"m"(aLocation):"memory")
 
@@ -271,8 +234,6 @@ typedef struct task_state_segment
    asm volatile ("lgdt  %0"::"m"(val):"memory")
 #define set_ldtr(val)             \
    asm volatile ("lldt  %0"::"m"(val):"memory")
-#define set_idtr(val)             \
-   asm volatile ("lidt  %0"::"m"(val):"memory")
 #define set_tr(val)               \
    asm volatile ("ltr   %%ax"::"a"(val))
 
