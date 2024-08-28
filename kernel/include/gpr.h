@@ -129,7 +129,7 @@ typedef union general_purpose_registers_context
 /*
 ** General Purpose Register operations
 */
-#define get_pc()                                                        \
+#define get_eip()                                                        \
    ({                                                                   \
       offset_t x;                                                       \
       asm volatile ("call 1f ; 1:pop %%eax":"=a"(x));                   \
