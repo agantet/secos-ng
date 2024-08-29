@@ -142,7 +142,7 @@ typedef union page_table_entry
 #define pg_readable(_e_)             pg_present(_e_)
 #define pg_writable(_e_)             (pg_present(_e_) && ((_e_)->rw))
 #define pg_large(_e_)                ((_e_)->page.ps)
-#define pg_zero(_e_)                 ((_e_)->raw = 0)
+#define pg_set_zero(_e_)                 ((_e_)->raw = 0)
 
 #define pg_set_entry(_e_,_attr_,_pfn_)          \
    ({                                           \
