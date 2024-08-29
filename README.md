@@ -1,4 +1,4 @@
-# secos-ng
+# secos-ng (x86)
 
 secos-ng est la nouvelle version de [SECOS](https://github.com/sduverger/secos), un projet éducatif permettant d'**appliquer pas à pas les concepts d'OS et de sécurité** abordés en cours à l'aide de petits TPs, pour la plateforme x86-32bits.
 Le noyau est simpliste. Il est démarré par Grub, en mode protégé en 32 bits, partiellement initialisé par Grub avant son démarrage. **L'objectif est, au fil des TPs, de le configurer petit à petit et de manière sécurisée.**
