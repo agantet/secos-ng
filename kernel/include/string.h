@@ -4,7 +4,9 @@
 
 #include <types.h>
 #include <gpr.h>
-#include <math.h>
+
+#define __divrm(a,b,r,m)                                                \
+   asm volatile ("div %%ecx":"=a"(r),"=d"(m):"a"(a),"d"(0),"c"(b))
 
 /*
 ** Size is number of store operations to repeat
