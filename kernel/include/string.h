@@ -125,16 +125,4 @@ static inline void __buf_add(buffer_t *buf, size_t len, char c)
       buf->data.str[buf->sz++] = c;
 }
 
-#define BAD_NIBBLE ((uint8_t)-1)
-
-/*
-** Prototypes
-*/
-int    dec_to_uint64(uint8_t*, size_t, uint64_t*);
-int    hex_to_uint64(uint8_t*, size_t, uint64_t*);
-int    __hex_to_uint8(uint8_t*, uint8_t*);
-
-size_t uint64_to_hex(buffer_t*, size_t, uint64_t, size_t);
-void   __uint8_to_hex(uint8_t*, uint8_t);
-
 #endif
