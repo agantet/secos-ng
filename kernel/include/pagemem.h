@@ -106,24 +106,24 @@ typedef union page_table_entry
 
 #define PG_4K_SHIFT                  12
 #define PG_4K_SIZE                   (1UL<<PG_4K_SHIFT)
-#define pg_4K_offset(addr)           ((addr)&(PG_4K_SIZE-1))
-#define pg_4K_nr(addr)               ((addr)>>PG_4K_SHIFT)
-#define pg_4K_addr(bits)             ((bits)<<PG_4K_SHIFT)
+#define pg_4K_get_offset(addr)           ((addr)&(PG_4K_SIZE-1))
+#define pg_4K_get_nr(addr)               ((addr)>>PG_4K_SHIFT)
+#define pg_4K_get_addr(bits)             ((bits)<<PG_4K_SHIFT)
 #define pg_4K_align(addr)            __align(addr,PG_4K_SIZE)
 #define pg_4K_align_next(addr)       __align_next(addr,PG_4K_SIZE)
-#define pg_4K_aligned(addr)          __aligned(addr,PG_4K_SIZE)
+#define pg_4K_is_aligned(addr)          __aligned(addr,PG_4K_SIZE)
 
 #define PG_4M_SHIFT                  22
 #define PG_4M_SIZE                   (1UL<<PG_4M_SHIFT)
-#define pg_4M_offset(addr)           ((addr)&(PG_4M_SIZE-1))
-#define pg_4M_nr(addr)               ((addr)>>PG_4M_SHIFT)
-#define pg_4M_addr(bits)             ((bits)<<PG_4M_SHIFT)
+#define pg_4M_get_offset(addr)           ((addr)&(PG_4M_SIZE-1))
+#define pg_4M_get_nr(addr)               ((addr)>>PG_4M_SHIFT)
+#define pg_4M_get_addr(bits)             ((bits)<<PG_4M_SHIFT)
 #define pg_4M_align(addr)            __align(addr,PG_4M_SIZE)
 #define pg_4M_align_next(addr)       __align_next(addr,PG_4M_SIZE)
-#define pg_4M_aligned(addr)          __aligned(addr,PG_4M_SIZE)
+#define pg_4M_is_aligned(addr)          __aligned(addr,PG_4M_SIZE)
 
-#define pd32_idx(addr)               ((((offset_t)addr)>>PG_4M_SHIFT)&0x3ff)
-#define pt32_idx(addr)               ((((offset_t)addr)>>PG_4K_SHIFT)&0x3ff)
+#define pd32_get_idx(addr)               ((((offset_t)addr)>>PG_4M_SHIFT)&0x3ff)
+#define pt32_get_idx(addr)               ((((offset_t)addr)>>PG_4K_SHIFT)&0x3ff)
 
 /*
 ** convenient
@@ -133,10 +133,10 @@ typedef union page_table_entry
 
 #define page_align(addr)             __align(addr,PAGE_SIZE)
 #define page_align_next(addr)        __align_next(addr,PAGE_SIZE)
-#define page_aligned(addr)           __aligned(addr,PAGE_SIZE)
+#define page_is_aligned(addr)           __aligned(addr,PAGE_SIZE)
 
-#define page_nr(addr)                pg_4K_nr((offset_t)addr)
-#define page_addr(bits)              pg_4K_addr((offset_t)bits)
+#define page_get_nr(addr)                pg_4K_get_nr((offset_t)addr)
+#define page_get_addr(bits)              pg_4K_get_addr((offset_t)bits)
 
 #define pg_present(_e_)              ((_e_)->p)
 #define pg_readable(_e_)             pg_present(_e_)
