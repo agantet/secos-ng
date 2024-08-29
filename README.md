@@ -1,9 +1,10 @@
 # secos-ng
 
-secos-ng est la nouvelle version de [SECOS](https://github.com/sduverger/secos), 
-un projet éducatif permettant d'appliquer pas à pas les concepts d'OS et de sécurité abordés 
-en cours à l'aide de petits TPs. Le [guide suivant](#quick-start-guide) indique, en bref, comment installer, trouver les énoncés et démarrer un TP.
-Le [wiki](https://github.com/agantet/secos-ng/wiki), plus complet, détaille notamment l'architecture du projet et son API.
+secos-ng est la nouvelle version de [SECOS](https://github.com/sduverger/secos), un projet éducatif permettant d'**appliquer pas à pas les concepts d'OS et de sécurité** abordés en cours à l'aide de petits TPs. 
+Le noyau est simpliste. Il est démarré par Grub, en mode protégé en 32 bits, partiellement initialisé par Grub avant son démarrage. **L'objectif est, au fil des TPs, de le configurer petit à petit et de manière sécurisée.**
+
+* Le [guide suivant](#quick-start-guide) indique, en bref, comment installer, trouver les énoncés et démarrer un TP.
+* Le [wiki](https://github.com/agantet/secos-ng/wiki), plus complet, détaille notamment l'architecture du projet et son API.
 
 # Quick start guide
 
@@ -17,24 +18,13 @@ bash$ sudo apt-get install qemu-system-x86 qemu-kvm gcc-multilib make git
 bash$ git clone https://github.com/agantet/secos-ng
 ```
 
-## Arborescence
+## Organisation du projet
 
-Le code de SECOS est organisé de la façon suivante :
+Le code de secos-ng est organisé de la façon suivante :
 
-```bash
-$ cd secos-ng ; ls
-kernel  README  tp0  tp1  tp2  tp3  tp4  tp5  tp_exam  utils
-```
-
-`kernel` contient l'implémentation de quelques composants de base. 
-`utils` contient l'ensemble des configurations nécessaires à la compilation, au lancement et au debug de secos-ng.
-Sauf indication contraire, il n'est pas nécessaire de modifier les fichiers de ces deux répertoires. 
-Le noyau est simpliste. Il démarre en mode protégé en 32 bits grâce à Grub. A
- ce titre, il accède à la mémoire physique directement sans pagination. Le
- mode protégé a été partiellement initialisé par Grub, mais le but va être, au fil
- des TPs, de le configurer petit à petit. Chaque répertoire `tpX` possède le
- squelette de code et l'environnement nécessaire pour créer un noyau incluant
- de plus en plus de fonctionnalités bas niveau.
+* [kernel](./kernel) contient l'implémentation de quelques composants de base. Sauf indication contraire, il n'est pas nécessaire de modifier les fichiers de ce répertoire.
+* [utils](./utils) contient l'ensemble des configurations nécessaires à la compilation, au lancement et au debug de secos-ng. Sauf indication contraire, il n'est pas nécessaire de modifier les fichiers de ce répertoire.
+* Chaque répertoire `tpX` possède le squelette de code et l'environnement nécessaire pour créer un noyau incluant de plus en plus de fonctionnalités bas niveau.
 
 ## Démarrage d'un TP
 
@@ -58,40 +48,27 @@ secos-a241db6-59e4545 (c) Airbus
 kernel mem [0x302010 - 0x303820]
 ```
 
-QEMU va alors démarrer une VM équipée d'un processeur x86 32 bits et de 128MB
-de RAM. Au lancement, le terminal courant va être utilisé par le mode monitor
-de QEMU et va afficher des messages de logs. La VM démarre sur une disquette "grub.floppy" qui contient le
-bootloader Grub. Celui-ci est configuré pour charger le fichier `kernel.elf`
-depuis le disque dur "HDD0". Le fichier `kernel.elf` est notre noyau d'OS, il
-se trouve dans le répertoire de TP courant.
+QEMU va alors démarrer une VM équipée d'un processeur x86 32 bits et de 128MB de RAM. La VM démarre sur une disquette "grub.floppy" qui contient le bootloader Grub. Celui-ci est configuré pour charger le fichier `kernel.elf` depuis le disque dur "HDD0". Le fichier `kernel.elf` est notre noyau d'OS, il se trouve dans le répertoire de TP courant.
+Au lancement, le terminal courant va être utilisé par le mode monitor de QEMU et va afficher des messages de logs (le port série de la VM est redirigé dans le terminal (stdio)).  La VM ne dispose pas d'affichage graphique. 
+
 
 ## Raccourcis QEMU utiles à connaitre
 
 * **\<ctrl-a\> \<x\>** : pour quitter (et stopper) la VM
-* **\<ctrl-a\>** puis **\<c\>** puis **\<enter\>**: pour accéder au "monitor" de QEMU (inspection de debug de la machine).
-Par défaut, le port série de la VM est redirigé dans votre terminal(stdio). La
-VM ne dispose pas d'affichage graphique. Pour rebasculer dans l'affichage des
-logs envoyées sur le port série, tapez de nouveau la
-séquence **\<ctrl-a\> \<c\> \<enter\>**. Le monitor est multiplexé avec le
-port série sur stdio.
-```bash
-QEMU 2.xx.yy monitor - type 'help' for more information
-(qemu)
-```
-
+* **\<ctrl-a\>** puis **\<c\>** puis **\<enter\>**: pour accéder au "monitor" de QEMU (inspection de debug de la machine) et en ressortir. Note : Le monitor est multiplexé avec le port série sur stdio.
 * **q** : pour quitter le mode monitor de QEMU
 
 ## Contributions élèves
 
 Les TP sont à réaliser dans l'ordre suivant :
 
-* [`tp0`](./tp0/README.md) : Démarrage
-* [`tp1`](./tp1/README.md) : Segmentation
-* [`tp2`](./tp2/README.md) : Interruptions et exceptions
-* [`tp3`](./tp3/README.md) : Niveau de privilèges
-* [`tp4`](./tp4/README.md) : Pagination
-* [`tp5`](./tp5/README.md) : Appels systèmes
-* [`tp_exam`](./tp_exam/README.md) : OS complet comportant 2 applications
+* [`tp0`](./tp0) : Démarrage
+* [`tp1`](./tp1) : Segmentation
+* [`tp2`](./tp2) : Interruptions et exceptions
+* [`tp3`](./tp3) : Niveau de privilèges
+* [`tp4`](./tp4) : Pagination
+* [`tp5`](./tp5) : Appels systèmes
+* [`tp_exam`](./tp_exam) : OS complet comportant 2 applications
 
 Dans chacun des répertoires, le fichier `README.md` contient **l'énoncé**, et le
 fichier `tp.c` est celui dans lequel **les développements sont attendus**. 
