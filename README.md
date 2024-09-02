@@ -54,9 +54,11 @@ Au lancement, le terminal courant va être utilisé par le mode monitor de QEMU 
 
 ## Raccourcis QEMU utiles à connaitre
 
-* **\<ctrl-a\> \<x\>** : pour quitter (et stopper) la VM
-* **\<ctrl-a\>** puis **\<c\>** puis **\<enter\>**: pour accéder au "monitor" de QEMU (inspection de debug de la machine) et en ressortir. Note : Le monitor est multiplexé avec le port série sur stdio.
-* **q** : pour quitter le mode monitor de QEMU
+|Raccourci| Utilité|
+|-|-|
+|**\<ctrl-a\> \<x\>**| Pour quitter (et stopper) la VM |
+|**\<ctrl-a\>** puis **\<c\>** puis **\<enter\>**| Pour accéder au "monitor" de QEMU (inspection de debug de la machine) et en ressortir. Note : Le monitor est multiplexé avec le port série sur stdio |
+| **q**| Pour quitter le mode monitor de QEMU |
 
 ## Contributions élèves
 
