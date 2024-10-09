@@ -216,6 +216,7 @@ typedef struct task_state_segment
 #define get_es()     get_seg_sel(es)
 #define get_fs()     get_seg_sel(fs)
 #define get_gs()     get_seg_sel(gs)
+#define get_cs()     get_seg_sel(cs)
 
 #define set_ss(v)    set_seg_sel(v,ss)
 #define set_ds(v)    set_seg_sel(v,ds)

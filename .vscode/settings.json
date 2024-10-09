@@ -7,6 +7,7 @@
         "type_traits": "c",
         "limits": "c",
         "new": "c",
-        "typeinfo": "c"
+        "typeinfo": "c",
+        "segmem.h": "c"
     }
 }
