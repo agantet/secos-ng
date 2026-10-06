@@ -17,20 +17,20 @@ SECTIONS
    . = 0x300000;
 ```
 
-Cependant,  `readelf` informe que le point d'entrée est à `0x302010` :
+Cependant,  `readelf` informe que le point d'entrée est à `0x303010` :
 
 ```bash
 (tp0)$ readelf -l kernel.elf
 
 Elf file type is EXEC (Executable file)
-Entry point 0x302010
+Entry point 0x303010
 There are 3 program headers, starting at offset 52
 
 Program Headers:
   Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
   LOAD           0x000094 0x00300000 0x00300000 0x0000c 0x0000c RWE 0x4
-  LOAD           0x0000a0 0x00300010 0x00300010 0x00000 0x02000 RW  0x10
-  LOAD           0x0000b0 0x00302010 0x00302010 0x013f8 0x01810 RWE 0x20
+  LOAD           0x000000 0x00300010 0x00300010 0x00000 0x02000 RW  0x10
+  LOAD           0x0000b0 0x00302010 0x00302010 0x02940 0x03570 RWE 0x20
 ```
 
 Par ailleurs, lors du démarrage, le noyau TP0 affiche sur le port série le
