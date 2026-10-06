@@ -45,7 +45,7 @@ kernel mem [0x302010 - 0x303820]
 
 **Q1 : A l'aide du [linker.lds](../utils/linker.lds) et de [entry.s](../kernel/core/entry.s), 
 déterminer la taille de la section `.mbh`  et `.stack` et en déduire d'où
-provient la valeur de point d'entrée à `0x302010` au lieu de `0x300000`.**
+provient la valeur de point d'entrée à `0x303010` au lieu de `0x300000`.**
 
 Note : il est possible de s'aider également de la page wiki sur les options de [linkage](https://github.com/agantet/secos-ng/wiki/Tooling#options-de-linkage).
 
