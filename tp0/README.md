@@ -40,7 +40,7 @@ message suivant concernant la zone mémoire qu'il occupe (affichage entre
 ```bash
 (tp0)$ make qemu
 secos-a241db6-59e4545 (c) Airbus
-kernel mem [0x302010 - 0x303820]
+kernel mem [0x302010 - 0x305580]
 ```
 
 **Q1 : A l'aide du [linker.lds](../utils/linker.lds) et de [entry.s](../kernel/core/entry.s), 
