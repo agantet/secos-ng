@@ -38,7 +38,15 @@ typedef unsigned long          size_t;
 typedef unsigned long          offset_t;
 typedef unsigned long          ulong_t;
 
-typedef enum { false=0, true } bool_t;
+#ifdef __STDC__
+	#if __STDC_VERSION__ >= 202311L
+		typedef bool bool_t;
+	#else
+		typedef enum { false=0, true } bool_t;
+	#endif
+#else
+	typedef enum { false=0, true } bool_t;
+#endif
 
 /*
 ** Offset of a field from a structure
